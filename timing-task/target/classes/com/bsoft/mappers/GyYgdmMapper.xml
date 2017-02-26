@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bsoft.dao.GyYgdmMapper" >
+  <resultMap id="BaseResultMap" type="com.bsoft.domain.GyYgdm" >
+    <id column="YGDM" property="ygdm" jdbcType="VARCHAR" />
+    <result column="JGID" property="jgid" jdbcType="DECIMAL" />
+    <result column="KSDM" property="ksdm" jdbcType="DECIMAL" />
+    <result column="YGXM" property="ygxm" jdbcType="VARCHAR" />
+    <result column="YGXB" property="ygxb" jdbcType="DECIMAL" />
+    <result column="CSNY" property="csny" jdbcType="DATE" />
+    <result column="YGZW" property="ygzw" jdbcType="DECIMAL" />
+    <result column="YGJB" property="ygjb" jdbcType="DECIMAL" />
+    <result column="PYDM" property="pydm" jdbcType="VARCHAR" />
+    <result column="WBDM" property="wbdm" jdbcType="VARCHAR" />
+    <result column="JXDM" property="jxdm" jdbcType="VARCHAR" />
+    <result column="QTDM" property="qtdm" jdbcType="VARCHAR" />
+    <result column="KCFQ" property="kcfq" jdbcType="VARCHAR" />
+    <result column="MZYQ" property="mzyq" jdbcType="VARCHAR" />
+    <result column="JSYQ" property="jsyq" jdbcType="VARCHAR" />
+    <result column="ZJPB" property="zjpb" jdbcType="DECIMAL" />
+    <result column="ZJFY" property="zjfy" jdbcType="DECIMAL" />
+    <result column="ZFPB" property="zfpb" jdbcType="DECIMAL" />
+    <result column="YSJJ" property="ysjj" jdbcType="VARCHAR" />
+    <result column="JZSJ_SW" property="jzsjSw" jdbcType="DATE" />
+    <result column="JZSJ_XW" property="jzsjXw" jdbcType="DATE" />
+    <result column="YGBH" property="ygbh" jdbcType="VARCHAR" />
+    <result column="YGMM" property="ygmm" jdbcType="VARCHAR" />
+    <result column="KSYQ" property="ksyq" jdbcType="DECIMAL" />
+    <result column="SJHM" property="sjhm" jdbcType="VARCHAR" />
+    <result column="YXDZ" property="yxdz" jdbcType="VARCHAR" />
+    <result column="ZXDM" property="zxdm" jdbcType="VARCHAR" />
+    <result column="ZXMM" property="zxmm" jdbcType="VARCHAR" />
+    <result column="ZXJS" property="zxjs" jdbcType="VARCHAR" />
+    <result column="KSSQ" property="kssq" jdbcType="DECIMAL" />
+    <result column="TSKSSQ" property="tskssq" jdbcType="DECIMAL" />
+    <result column="YGJS" property="ygjs" jdbcType="DECIMAL" />
+    <result column="LXDH" property="lxdh" jdbcType="VARCHAR" />
+    <result column="BZXX" property="bzxx" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    YGDM, JGID, KSDM, YGXM, YGXB, CSNY, YGZW, YGJB, PYDM, WBDM, JXDM, QTDM, KCFQ, MZYQ, 
+    JSYQ, ZJPB, ZJFY, ZFPB, YSJJ, JZSJ_SW, JZSJ_XW, YGBH, YGMM, KSYQ, SJHM, YXDZ, ZXDM, 
+    ZXMM, ZXJS, KSSQ, TSKSSQ, YGJS, LXDH, BZXX
+  </sql>
+  
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.bsoft.domain.GyYgdmExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from GY_YGDM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from GY_YGDM
+    where YGDM = #{ygdm,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from GY_YGDM
+    where YGDM = #{ygdm,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bsoft.domain.GyYgdmExample" >
+    delete from GY_YGDM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bsoft.domain.GyYgdm" >
+    insert into GY_YGDM (YGDM, JGID, KSDM, 
+      YGXM, YGXB, CSNY, YGZW, 
+      YGJB, PYDM, WBDM, JXDM, 
+      QTDM, KCFQ, MZYQ, JSYQ, 
+      ZJPB, ZJFY, ZFPB, YSJJ, 
+      JZSJ_SW, JZSJ_XW, YGBH, YGMM, 
+      KSYQ, SJHM, YXDZ, ZXDM, 
+      ZXMM, ZXJS, KSSQ, TSKSSQ, 
+      YGJS, LXDH, BZXX)
+    values (#{ygdm,jdbcType=VARCHAR}, #{jgid,jdbcType=DECIMAL}, #{ksdm,jdbcType=DECIMAL}, 
+      #{ygxm,jdbcType=VARCHAR}, #{ygxb,jdbcType=DECIMAL}, #{csny,jdbcType=DATE}, #{ygzw,jdbcType=DECIMAL}, 
+      #{ygjb,jdbcType=DECIMAL}, #{pydm,jdbcType=VARCHAR}, #{wbdm,jdbcType=VARCHAR}, #{jxdm,jdbcType=VARCHAR}, 
+      #{qtdm,jdbcType=VARCHAR}, #{kcfq,jdbcType=VARCHAR}, #{mzyq,jdbcType=VARCHAR}, #{jsyq,jdbcType=VARCHAR}, 
+      #{zjpb,jdbcType=DECIMAL}, #{zjfy,jdbcType=DECIMAL}, #{zfpb,jdbcType=DECIMAL}, #{ysjj,jdbcType=VARCHAR}, 
+      #{jzsjSw,jdbcType=DATE}, #{jzsjXw,jdbcType=DATE}, #{ygbh,jdbcType=VARCHAR}, #{ygmm,jdbcType=VARCHAR}, 
+      #{ksyq,jdbcType=DECIMAL}, #{sjhm,jdbcType=VARCHAR}, #{yxdz,jdbcType=VARCHAR}, #{zxdm,jdbcType=VARCHAR}, 
+      #{zxmm,jdbcType=VARCHAR}, #{zxjs,jdbcType=VARCHAR}, #{kssq,jdbcType=DECIMAL}, #{tskssq,jdbcType=DECIMAL}, 
+      #{ygjs,jdbcType=DECIMAL}, #{lxdh,jdbcType=VARCHAR}, #{bzxx,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bsoft.domain.GyYgdm" >
+    insert into GY_YGDM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ygdm != null" >
+        YGDM,
+      </if>
+      <if test="jgid != null" >
+        JGID,
+      </if>
+      <if test="ksdm != null" >
+        KSDM,
+      </if>
+      <if test="ygxm != null" >
+        YGXM,
+      </if>
+      <if test="ygxb != null" >
+        YGXB,
+      </if>
+      <if test="csny != null" >
+        CSNY,
+      </if>
+      <if test="ygzw != null" >
+        YGZW,
+      </if>
+      <if test="ygjb != null" >
+        YGJB,
+      </if>
+      <if test="pydm != null" >
+        PYDM,
+      </if>
+      <if test="wbdm != null" >
+        WBDM,
+      </if>
+      <if test="jxdm != null" >
+        JXDM,
+      </if>
+      <if test="qtdm != null" >
+        QTDM,
+      </if>
+      <if test="kcfq != null" >
+        KCFQ,
+      </if>
+      <if test="mzyq != null" >
+        MZYQ,
+      </if>
+      <if test="jsyq != null" >
+        JSYQ,
+      </if>
+      <if test="zjpb != null" >
+        ZJPB,
+      </if>
+      <if test="zjfy != null" >
+        ZJFY,
+      </if>
+      <if test="zfpb != null" >
+        ZFPB,
+      </if>
+      <if test="ysjj != null" >
+        YSJJ,
+      </if>
+      <if test="jzsjSw != null" >
+        JZSJ_SW,
+      </if>
+      <if test="jzsjXw != null" >
+        JZSJ_XW,
+      </if>
+      <if test="ygbh != null" >
+        YGBH,
+      </if>
+      <if test="ygmm != null" >
+        YGMM,
+      </if>
+      <if test="ksyq != null" >
+        KSYQ,
+      </if>
+      <if test="sjhm != null" >
+        SJHM,
+      </if>
+      <if test="yxdz != null" >
+        YXDZ,
+      </if>
+      <if test="zxdm != null" >
+        ZXDM,
+      </if>
+      <if test="zxmm != null" >
+        ZXMM,
+      </if>
+      <if test="zxjs != null" >
+        ZXJS,
+      </if>
+      <if test="kssq != null" >
+        KSSQ,
+      </if>
+      <if test="tskssq != null" >
+        TSKSSQ,
+      </if>
+      <if test="ygjs != null" >
+        YGJS,
+      </if>
+      <if test="lxdh != null" >
+        LXDH,
+      </if>
+      <if test="bzxx != null" >
+        BZXX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ygdm != null" >
+        #{ygdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jgid != null" >
+        #{jgid,jdbcType=DECIMAL},
+      </if>
+      <if test="ksdm != null" >
+        #{ksdm,jdbcType=DECIMAL},
+      </if>
+      <if test="ygxm != null" >
+        #{ygxm,jdbcType=VARCHAR},
+      </if>
+      <if test="ygxb != null" >
+        #{ygxb,jdbcType=DECIMAL},
+      </if>
+      <if test="csny != null" >
+        #{csny,jdbcType=DATE},
+      </if>
+      <if test="ygzw != null" >
+        #{ygzw,jdbcType=DECIMAL},
+      </if>
+      <if test="ygjb != null" >
+        #{ygjb,jdbcType=DECIMAL},
+      </if>
+      <if test="pydm != null" >
+        #{pydm,jdbcType=VARCHAR},
+      </if>
+      <if test="wbdm != null" >
+        #{wbdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxdm != null" >
+        #{jxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="qtdm != null" >
+        #{qtdm,jdbcType=VARCHAR},
+      </if>
+      <if test="kcfq != null" >
+        #{kcfq,jdbcType=VARCHAR},
+      </if>
+      <if test="mzyq != null" >
+        #{mzyq,jdbcType=VARCHAR},
+      </if>
+      <if test="jsyq != null" >
+        #{jsyq,jdbcType=VARCHAR},
+      </if>
+      <if test="zjpb != null" >
+        #{zjpb,jdbcType=DECIMAL},
+      </if>
+      <if test="zjfy != null" >
+        #{zjfy,jdbcType=DECIMAL},
+      </if>
+      <if test="zfpb != null" >
+        #{zfpb,jdbcType=DECIMAL},
+      </if>
+      <if test="ysjj != null" >
+        #{ysjj,jdbcType=VARCHAR},
+      </if>
+      <if test="jzsjSw != null" >
+        #{jzsjSw,jdbcType=DATE},
+      </if>
+      <if test="jzsjXw != null" >
+        #{jzsjXw,jdbcType=DATE},
+      </if>
+      <if test="ygbh != null" >
+        #{ygbh,jdbcType=VARCHAR},
+      </if>
+      <if test="ygmm != null" >
+        #{ygmm,jdbcType=VARCHAR},
+      </if>
+      <if test="ksyq != null" >
+        #{ksyq,jdbcType=DECIMAL},
+      </if>
+      <if test="sjhm != null" >
+        #{sjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="yxdz != null" >
+        #{yxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="zxdm != null" >
+        #{zxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zxmm != null" >
+        #{zxmm,jdbcType=VARCHAR},
+      </if>
+      <if test="zxjs != null" >
+        #{zxjs,jdbcType=VARCHAR},
+      </if>
+      <if test="kssq != null" >
+        #{kssq,jdbcType=DECIMAL},
+      </if>
+      <if test="tskssq != null" >
+        #{tskssq,jdbcType=DECIMAL},
+      </if>
+      <if test="ygjs != null" >
+        #{ygjs,jdbcType=DECIMAL},
+      </if>
+      <if test="lxdh != null" >
+        #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="bzxx != null" >
+        #{bzxx,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bsoft.domain.GyYgdmExample" resultType="java.lang.Integer" >
+    select count(*) from GY_YGDM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update GY_YGDM
+    <set >
+      <if test="record.ygdm != null" >
+        YGDM = #{record.ygdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jgid != null" >
+        JGID = #{record.jgid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ksdm != null" >
+        KSDM = #{record.ksdm,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ygxm != null" >
+        YGXM = #{record.ygxm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ygxb != null" >
+        YGXB = #{record.ygxb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.csny != null" >
+        CSNY = #{record.csny,jdbcType=DATE},
+      </if>
+      <if test="record.ygzw != null" >
+        YGZW = #{record.ygzw,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ygjb != null" >
+        YGJB = #{record.ygjb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.pydm != null" >
+        PYDM = #{record.pydm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wbdm != null" >
+        WBDM = #{record.wbdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jxdm != null" >
+        JXDM = #{record.jxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qtdm != null" >
+        QTDM = #{record.qtdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kcfq != null" >
+        KCFQ = #{record.kcfq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mzyq != null" >
+        MZYQ = #{record.mzyq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jsyq != null" >
+        JSYQ = #{record.jsyq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zjpb != null" >
+        ZJPB = #{record.zjpb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.zjfy != null" >
+        ZJFY = #{record.zjfy,jdbcType=DECIMAL},
+      </if>
+      <if test="record.zfpb != null" >
+        ZFPB = #{record.zfpb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ysjj != null" >
+        YSJJ = #{record.ysjj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jzsjSw != null" >
+        JZSJ_SW = #{record.jzsjSw,jdbcType=DATE},
+      </if>
+      <if test="record.jzsjXw != null" >
+        JZSJ_XW = #{record.jzsjXw,jdbcType=DATE},
+      </if>
+      <if test="record.ygbh != null" >
+        YGBH = #{record.ygbh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ygmm != null" >
+        YGMM = #{record.ygmm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ksyq != null" >
+        KSYQ = #{record.ksyq,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sjhm != null" >
+        SJHM = #{record.sjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yxdz != null" >
+        YXDZ = #{record.yxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zxdm != null" >
+        ZXDM = #{record.zxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zxmm != null" >
+        ZXMM = #{record.zxmm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zxjs != null" >
+        ZXJS = #{record.zxjs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kssq != null" >
+        KSSQ = #{record.kssq,jdbcType=DECIMAL},
+      </if>
+      <if test="record.tskssq != null" >
+        TSKSSQ = #{record.tskssq,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ygjs != null" >
+        YGJS = #{record.ygjs,jdbcType=DECIMAL},
+      </if>
+      <if test="record.lxdh != null" >
+        LXDH = #{record.lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bzxx != null" >
+        BZXX = #{record.bzxx,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update GY_YGDM
+    set YGDM = #{record.ygdm,jdbcType=VARCHAR},
+      JGID = #{record.jgid,jdbcType=DECIMAL},
+      KSDM = #{record.ksdm,jdbcType=DECIMAL},
+      YGXM = #{record.ygxm,jdbcType=VARCHAR},
+      YGXB = #{record.ygxb,jdbcType=DECIMAL},
+      CSNY = #{record.csny,jdbcType=DATE},
+      YGZW = #{record.ygzw,jdbcType=DECIMAL},
+      YGJB = #{record.ygjb,jdbcType=DECIMAL},
+      PYDM = #{record.pydm,jdbcType=VARCHAR},
+      WBDM = #{record.wbdm,jdbcType=VARCHAR},
+      JXDM = #{record.jxdm,jdbcType=VARCHAR},
+      QTDM = #{record.qtdm,jdbcType=VARCHAR},
+      KCFQ = #{record.kcfq,jdbcType=VARCHAR},
+      MZYQ = #{record.mzyq,jdbcType=VARCHAR},
+      JSYQ = #{record.jsyq,jdbcType=VARCHAR},
+      ZJPB = #{record.zjpb,jdbcType=DECIMAL},
+      ZJFY = #{record.zjfy,jdbcType=DECIMAL},
+      ZFPB = #{record.zfpb,jdbcType=DECIMAL},
+      YSJJ = #{record.ysjj,jdbcType=VARCHAR},
+      JZSJ_SW = #{record.jzsjSw,jdbcType=DATE},
+      JZSJ_XW = #{record.jzsjXw,jdbcType=DATE},
+      YGBH = #{record.ygbh,jdbcType=VARCHAR},
+      YGMM = #{record.ygmm,jdbcType=VARCHAR},
+      KSYQ = #{record.ksyq,jdbcType=DECIMAL},
+      SJHM = #{record.sjhm,jdbcType=VARCHAR},
+      YXDZ = #{record.yxdz,jdbcType=VARCHAR},
+      ZXDM = #{record.zxdm,jdbcType=VARCHAR},
+      ZXMM = #{record.zxmm,jdbcType=VARCHAR},
+      ZXJS = #{record.zxjs,jdbcType=VARCHAR},
+      KSSQ = #{record.kssq,jdbcType=DECIMAL},
+      TSKSSQ = #{record.tskssq,jdbcType=DECIMAL},
+      YGJS = #{record.ygjs,jdbcType=DECIMAL},
+      LXDH = #{record.lxdh,jdbcType=VARCHAR},
+      BZXX = #{record.bzxx,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bsoft.domain.GyYgdm" >
+    update GY_YGDM
+    <set >
+      <if test="jgid != null" >
+        JGID = #{jgid,jdbcType=DECIMAL},
+      </if>
+      <if test="ksdm != null" >
+        KSDM = #{ksdm,jdbcType=DECIMAL},
+      </if>
+      <if test="ygxm != null" >
+        YGXM = #{ygxm,jdbcType=VARCHAR},
+      </if>
+      <if test="ygxb != null" >
+        YGXB = #{ygxb,jdbcType=DECIMAL},
+      </if>
+      <if test="csny != null" >
+        CSNY = #{csny,jdbcType=DATE},
+      </if>
+      <if test="ygzw != null" >
+        YGZW = #{ygzw,jdbcType=DECIMAL},
+      </if>
+      <if test="ygjb != null" >
+        YGJB = #{ygjb,jdbcType=DECIMAL},
+      </if>
+      <if test="pydm != null" >
+        PYDM = #{pydm,jdbcType=VARCHAR},
+      </if>
+      <if test="wbdm != null" >
+        WBDM = #{wbdm,jdbcType=VARCHAR},
+      </if>
+      <if test="jxdm != null" >
+        JXDM = #{jxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="qtdm != null" >
+        QTDM = #{qtdm,jdbcType=VARCHAR},
+      </if>
+      <if test="kcfq != null" >
+        KCFQ = #{kcfq,jdbcType=VARCHAR},
+      </if>
+      <if test="mzyq != null" >
+        MZYQ = #{mzyq,jdbcType=VARCHAR},
+      </if>
+      <if test="jsyq != null" >
+        JSYQ = #{jsyq,jdbcType=VARCHAR},
+      </if>
+      <if test="zjpb != null" >
+        ZJPB = #{zjpb,jdbcType=DECIMAL},
+      </if>
+      <if test="zjfy != null" >
+        ZJFY = #{zjfy,jdbcType=DECIMAL},
+      </if>
+      <if test="zfpb != null" >
+        ZFPB = #{zfpb,jdbcType=DECIMAL},
+      </if>
+      <if test="ysjj != null" >
+        YSJJ = #{ysjj,jdbcType=VARCHAR},
+      </if>
+      <if test="jzsjSw != null" >
+        JZSJ_SW = #{jzsjSw,jdbcType=DATE},
+      </if>
+      <if test="jzsjXw != null" >
+        JZSJ_XW = #{jzsjXw,jdbcType=DATE},
+      </if>
+      <if test="ygbh != null" >
+        YGBH = #{ygbh,jdbcType=VARCHAR},
+      </if>
+      <if test="ygmm != null" >
+        YGMM = #{ygmm,jdbcType=VARCHAR},
+      </if>
+      <if test="ksyq != null" >
+        KSYQ = #{ksyq,jdbcType=DECIMAL},
+      </if>
+      <if test="sjhm != null" >
+        SJHM = #{sjhm,jdbcType=VARCHAR},
+      </if>
+      <if test="yxdz != null" >
+        YXDZ = #{yxdz,jdbcType=VARCHAR},
+      </if>
+      <if test="zxdm != null" >
+        ZXDM = #{zxdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zxmm != null" >
+        ZXMM = #{zxmm,jdbcType=VARCHAR},
+      </if>
+      <if test="zxjs != null" >
+        ZXJS = #{zxjs,jdbcType=VARCHAR},
+      </if>
+      <if test="kssq != null" >
+        KSSQ = #{kssq,jdbcType=DECIMAL},
+      </if>
+      <if test="tskssq != null" >
+        TSKSSQ = #{tskssq,jdbcType=DECIMAL},
+      </if>
+      <if test="ygjs != null" >
+        YGJS = #{ygjs,jdbcType=DECIMAL},
+      </if>
+      <if test="lxdh != null" >
+        LXDH = #{lxdh,jdbcType=VARCHAR},
+      </if>
+      <if test="bzxx != null" >
+        BZXX = #{bzxx,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where YGDM = #{ygdm,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bsoft.domain.GyYgdm" >
+    update GY_YGDM
+    set JGID = #{jgid,jdbcType=DECIMAL},
+      KSDM = #{ksdm,jdbcType=DECIMAL},
+      YGXM = #{ygxm,jdbcType=VARCHAR},
+      YGXB = #{ygxb,jdbcType=DECIMAL},
+      CSNY = #{csny,jdbcType=DATE},
+      YGZW = #{ygzw,jdbcType=DECIMAL},
+      YGJB = #{ygjb,jdbcType=DECIMAL},
+      PYDM = #{pydm,jdbcType=VARCHAR},
+      WBDM = #{wbdm,jdbcType=VARCHAR},
+      JXDM = #{jxdm,jdbcType=VARCHAR},
+      QTDM = #{qtdm,jdbcType=VARCHAR},
+      KCFQ = #{kcfq,jdbcType=VARCHAR},
+      MZYQ = #{mzyq,jdbcType=VARCHAR},
+      JSYQ = #{jsyq,jdbcType=VARCHAR},
+      ZJPB = #{zjpb,jdbcType=DECIMAL},
+      ZJFY = #{zjfy,jdbcType=DECIMAL},
+      ZFPB = #{zfpb,jdbcType=DECIMAL},
+      YSJJ = #{ysjj,jdbcType=VARCHAR},
+      JZSJ_SW = #{jzsjSw,jdbcType=DATE},
+      JZSJ_XW = #{jzsjXw,jdbcType=DATE},
+      YGBH = #{ygbh,jdbcType=VARCHAR},
+      YGMM = #{ygmm,jdbcType=VARCHAR},
+      KSYQ = #{ksyq,jdbcType=DECIMAL},
+      SJHM = #{sjhm,jdbcType=VARCHAR},
+      YXDZ = #{yxdz,jdbcType=VARCHAR},
+      ZXDM = #{zxdm,jdbcType=VARCHAR},
+      ZXMM = #{zxmm,jdbcType=VARCHAR},
+      ZXJS = #{zxjs,jdbcType=VARCHAR},
+      KSSQ = #{kssq,jdbcType=DECIMAL},
+      TSKSSQ = #{tskssq,jdbcType=DECIMAL},
+      YGJS = #{ygjs,jdbcType=DECIMAL},
+      LXDH = #{lxdh,jdbcType=VARCHAR},
+      BZXX = #{bzxx,jdbcType=VARCHAR}
+    where YGDM = #{ygdm,jdbcType=VARCHAR}
+  </update>
+</mapper>

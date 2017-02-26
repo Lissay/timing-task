@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bsoft.dao.EhospitaliiRsglZgdaMapper" >
+  <resultMap id="BaseResultMap" type="com.bsoft.domain.EhospitaliiRsglZgda" >
+    <id column="ZGID" property="zgid" jdbcType="VARCHAR" />
+    <result column="ZGGH" property="zggh" jdbcType="VARCHAR" />
+    <result column="XM" property="xm" jdbcType="VARCHAR" />
+    <result column="XB" property="xb" jdbcType="VARCHAR" />
+    <result column="SRM1" property="srm1" jdbcType="VARCHAR" />
+    <result column="DHDH" property="dhdh" jdbcType="VARCHAR" />
+    <result column="DHQH" property="dhqh" jdbcType="VARCHAR" />
+    <result column="KSID" property="ksid" jdbcType="VARCHAR" />
+    <result column="KSDM" property="ksdm" jdbcType="VARCHAR" />
+    <result column="KSMC" property="ksmc" jdbcType="VARCHAR" />
+    <result column="ZYKSID" property="zyksid" jdbcType="VARCHAR" />
+    <result column="ZYKSDM" property="zyksdm" jdbcType="VARCHAR" />
+    <result column="ZYKSMC" property="zyksmc" jdbcType="VARCHAR" />
+    <result column="ZGFL" property="zgfl" jdbcType="VARCHAR" />
+    <result column="ZGFLMC" property="zgflmc" jdbcType="VARCHAR" />
+    <result column="RYXZ" property="ryxz" jdbcType="VARCHAR" />
+    <result column="RYXZMC" property="ryxzmc" jdbcType="VARCHAR" />
+    <result column="ZC" property="zc" jdbcType="VARCHAR" />
+    <result column="ZCMC" property="zcmc" jdbcType="VARCHAR" />
+    <result column="ZW" property="zw" jdbcType="VARCHAR" />
+    <result column="ZWMC" property="zwmc" jdbcType="VARCHAR" />
+    <result column="NJ" property="nj" jdbcType="VARCHAR" />
+    <result column="JB" property="jb" jdbcType="VARCHAR" />
+    <result column="GW" property="gw" jdbcType="VARCHAR" />
+    <result column="HIS_KSDM" property="hisKsdm" jdbcType="VARCHAR" />
+    <result column="HIS_KSMC" property="hisKsmc" jdbcType="VARCHAR" />
+    <result column="HL" property="hl" jdbcType="DECIMAL" />
+    <result column="ZXPB" property="zxpb" jdbcType="DECIMAL" />
+    <result column="SYPB" property="sypb" jdbcType="DECIMAL" />
+    <result column="GXBZ" property="gxbz" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ZGID, ZGGH, XM, XB, SRM1, DHDH, DHQH, KSID, KSDM, KSMC, ZYKSID, ZYKSDM, ZYKSMC, ZGFL, 
+    ZGFLMC, RYXZ, RYXZMC, ZC, ZCMC, ZW, ZWMC, NJ, JB, GW, HIS_KSDM, HIS_KSMC, HL, ZXPB, 
+    SYPB, GXBZ
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.bsoft.domain.EhospitaliiRsglZgdaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from EHOSPITALII_RSGL_ZGDA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from EHOSPITALII_RSGL_ZGDA
+    where ZGID = #{zgid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from EHOSPITALII_RSGL_ZGDA
+    where ZGID = #{zgid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bsoft.domain.EhospitaliiRsglZgdaExample" >
+    delete from EHOSPITALII_RSGL_ZGDA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bsoft.domain.EhospitaliiRsglZgda" >
+    insert into EHOSPITALII_RSGL_ZGDA (ZGID, ZGGH, XM, 
+      XB, SRM1, DHDH, DHQH, 
+      KSID, KSDM, KSMC, ZYKSID, 
+      ZYKSDM, ZYKSMC, ZGFL, 
+      ZGFLMC, RYXZ, RYXZMC, 
+      ZC, ZCMC, ZW, ZWMC, 
+      NJ, JB, GW, HIS_KSDM, 
+      HIS_KSMC, HL, ZXPB, 
+      SYPB, GXBZ)
+    values (#{zgid,jdbcType=VARCHAR}, #{zggh,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, 
+      #{xb,jdbcType=VARCHAR}, #{srm1,jdbcType=VARCHAR}, #{dhdh,jdbcType=VARCHAR}, #{dhqh,jdbcType=VARCHAR}, 
+      #{ksid,jdbcType=VARCHAR}, #{ksdm,jdbcType=VARCHAR}, #{ksmc,jdbcType=VARCHAR}, #{zyksid,jdbcType=VARCHAR}, 
+      #{zyksdm,jdbcType=VARCHAR}, #{zyksmc,jdbcType=VARCHAR}, #{zgfl,jdbcType=VARCHAR}, 
+      #{zgflmc,jdbcType=VARCHAR}, #{ryxz,jdbcType=VARCHAR}, #{ryxzmc,jdbcType=VARCHAR}, 
+      #{zc,jdbcType=VARCHAR}, #{zcmc,jdbcType=VARCHAR}, #{zw,jdbcType=VARCHAR}, #{zwmc,jdbcType=VARCHAR}, 
+      #{nj,jdbcType=VARCHAR}, #{jb,jdbcType=VARCHAR}, #{gw,jdbcType=VARCHAR}, #{hisKsdm,jdbcType=VARCHAR}, 
+      #{hisKsmc,jdbcType=VARCHAR}, #{hl,jdbcType=DECIMAL}, #{zxpb,jdbcType=DECIMAL}, 
+      #{sypb,jdbcType=DECIMAL}, #{gxbz,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bsoft.domain.EhospitaliiRsglZgda" >
+    insert into EHOSPITALII_RSGL_ZGDA
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zgid != null" >
+        ZGID,
+      </if>
+      <if test="zggh != null" >
+        ZGGH,
+      </if>
+      <if test="xm != null" >
+        XM,
+      </if>
+      <if test="xb != null" >
+        XB,
+      </if>
+      <if test="srm1 != null" >
+        SRM1,
+      </if>
+      <if test="dhdh != null" >
+        DHDH,
+      </if>
+      <if test="dhqh != null" >
+        DHQH,
+      </if>
+      <if test="ksid != null" >
+        KSID,
+      </if>
+      <if test="ksdm != null" >
+        KSDM,
+      </if>
+      <if test="ksmc != null" >
+        KSMC,
+      </if>
+      <if test="zyksid != null" >
+        ZYKSID,
+      </if>
+      <if test="zyksdm != null" >
+        ZYKSDM,
+      </if>
+      <if test="zyksmc != null" >
+        ZYKSMC,
+      </if>
+      <if test="zgfl != null" >
+        ZGFL,
+      </if>
+      <if test="zgflmc != null" >
+        ZGFLMC,
+      </if>
+      <if test="ryxz != null" >
+        RYXZ,
+      </if>
+      <if test="ryxzmc != null" >
+        RYXZMC,
+      </if>
+      <if test="zc != null" >
+        ZC,
+      </if>
+      <if test="zcmc != null" >
+        ZCMC,
+      </if>
+      <if test="zw != null" >
+        ZW,
+      </if>
+      <if test="zwmc != null" >
+        ZWMC,
+      </if>
+      <if test="nj != null" >
+        NJ,
+      </if>
+      <if test="jb != null" >
+        JB,
+      </if>
+      <if test="gw != null" >
+        GW,
+      </if>
+      <if test="hisKsdm != null" >
+        HIS_KSDM,
+      </if>
+      <if test="hisKsmc != null" >
+        HIS_KSMC,
+      </if>
+      <if test="hl != null" >
+        HL,
+      </if>
+      <if test="zxpb != null" >
+        ZXPB,
+      </if>
+      <if test="sypb != null" >
+        SYPB,
+      </if>
+      <if test="gxbz != null" >
+        GXBZ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zgid != null" >
+        #{zgid,jdbcType=VARCHAR},
+      </if>
+      <if test="zggh != null" >
+        #{zggh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="srm1 != null" >
+        #{srm1,jdbcType=VARCHAR},
+      </if>
+      <if test="dhdh != null" >
+        #{dhdh,jdbcType=VARCHAR},
+      </if>
+      <if test="dhqh != null" >
+        #{dhqh,jdbcType=VARCHAR},
+      </if>
+      <if test="ksid != null" >
+        #{ksid,jdbcType=VARCHAR},
+      </if>
+      <if test="ksdm != null" >
+        #{ksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="ksmc != null" >
+        #{ksmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zyksid != null" >
+        #{zyksid,jdbcType=VARCHAR},
+      </if>
+      <if test="zyksdm != null" >
+        #{zyksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zyksmc != null" >
+        #{zyksmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zgfl != null" >
+        #{zgfl,jdbcType=VARCHAR},
+      </if>
+      <if test="zgflmc != null" >
+        #{zgflmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ryxz != null" >
+        #{ryxz,jdbcType=VARCHAR},
+      </if>
+      <if test="ryxzmc != null" >
+        #{ryxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zc != null" >
+        #{zc,jdbcType=VARCHAR},
+      </if>
+      <if test="zcmc != null" >
+        #{zcmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zw != null" >
+        #{zw,jdbcType=VARCHAR},
+      </if>
+      <if test="zwmc != null" >
+        #{zwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="nj != null" >
+        #{nj,jdbcType=VARCHAR},
+      </if>
+      <if test="jb != null" >
+        #{jb,jdbcType=VARCHAR},
+      </if>
+      <if test="gw != null" >
+        #{gw,jdbcType=VARCHAR},
+      </if>
+      <if test="hisKsdm != null" >
+        #{hisKsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="hisKsmc != null" >
+        #{hisKsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="hl != null" >
+        #{hl,jdbcType=DECIMAL},
+      </if>
+      <if test="zxpb != null" >
+        #{zxpb,jdbcType=DECIMAL},
+      </if>
+      <if test="sypb != null" >
+        #{sypb,jdbcType=DECIMAL},
+      </if>
+      <if test="gxbz != null" >
+        #{gxbz,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bsoft.domain.EhospitaliiRsglZgdaExample" resultType="java.lang.Integer" >
+    select count(*) from EHOSPITALII_RSGL_ZGDA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update EHOSPITALII_RSGL_ZGDA
+    <set >
+      <if test="record.zgid != null" >
+        ZGID = #{record.zgid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zggh != null" >
+        ZGGH = #{record.zggh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xm != null" >
+        XM = #{record.xm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xb != null" >
+        XB = #{record.xb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.srm1 != null" >
+        SRM1 = #{record.srm1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dhdh != null" >
+        DHDH = #{record.dhdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dhqh != null" >
+        DHQH = #{record.dhqh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ksid != null" >
+        KSID = #{record.ksid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ksdm != null" >
+        KSDM = #{record.ksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ksmc != null" >
+        KSMC = #{record.ksmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zyksid != null" >
+        ZYKSID = #{record.zyksid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zyksdm != null" >
+        ZYKSDM = #{record.zyksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zyksmc != null" >
+        ZYKSMC = #{record.zyksmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zgfl != null" >
+        ZGFL = #{record.zgfl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zgflmc != null" >
+        ZGFLMC = #{record.zgflmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ryxz != null" >
+        RYXZ = #{record.ryxz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ryxzmc != null" >
+        RYXZMC = #{record.ryxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zc != null" >
+        ZC = #{record.zc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zcmc != null" >
+        ZCMC = #{record.zcmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zw != null" >
+        ZW = #{record.zw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zwmc != null" >
+        ZWMC = #{record.zwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nj != null" >
+        NJ = #{record.nj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jb != null" >
+        JB = #{record.jb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gw != null" >
+        GW = #{record.gw,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hisKsdm != null" >
+        HIS_KSDM = #{record.hisKsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hisKsmc != null" >
+        HIS_KSMC = #{record.hisKsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hl != null" >
+        HL = #{record.hl,jdbcType=DECIMAL},
+      </if>
+      <if test="record.zxpb != null" >
+        ZXPB = #{record.zxpb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sypb != null" >
+        SYPB = #{record.sypb,jdbcType=DECIMAL},
+      </if>
+      <if test="record.gxbz != null" >
+        GXBZ = #{record.gxbz,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update EHOSPITALII_RSGL_ZGDA
+    set ZGID = #{record.zgid,jdbcType=VARCHAR},
+      ZGGH = #{record.zggh,jdbcType=VARCHAR},
+      XM = #{record.xm,jdbcType=VARCHAR},
+      XB = #{record.xb,jdbcType=VARCHAR},
+      SRM1 = #{record.srm1,jdbcType=VARCHAR},
+      DHDH = #{record.dhdh,jdbcType=VARCHAR},
+      DHQH = #{record.dhqh,jdbcType=VARCHAR},
+      KSID = #{record.ksid,jdbcType=VARCHAR},
+      KSDM = #{record.ksdm,jdbcType=VARCHAR},
+      KSMC = #{record.ksmc,jdbcType=VARCHAR},
+      ZYKSID = #{record.zyksid,jdbcType=VARCHAR},
+      ZYKSDM = #{record.zyksdm,jdbcType=VARCHAR},
+      ZYKSMC = #{record.zyksmc,jdbcType=VARCHAR},
+      ZGFL = #{record.zgfl,jdbcType=VARCHAR},
+      ZGFLMC = #{record.zgflmc,jdbcType=VARCHAR},
+      RYXZ = #{record.ryxz,jdbcType=VARCHAR},
+      RYXZMC = #{record.ryxzmc,jdbcType=VARCHAR},
+      ZC = #{record.zc,jdbcType=VARCHAR},
+      ZCMC = #{record.zcmc,jdbcType=VARCHAR},
+      ZW = #{record.zw,jdbcType=VARCHAR},
+      ZWMC = #{record.zwmc,jdbcType=VARCHAR},
+      NJ = #{record.nj,jdbcType=VARCHAR},
+      JB = #{record.jb,jdbcType=VARCHAR},
+      GW = #{record.gw,jdbcType=VARCHAR},
+      HIS_KSDM = #{record.hisKsdm,jdbcType=VARCHAR},
+      HIS_KSMC = #{record.hisKsmc,jdbcType=VARCHAR},
+      HL = #{record.hl,jdbcType=DECIMAL},
+      ZXPB = #{record.zxpb,jdbcType=DECIMAL},
+      SYPB = #{record.sypb,jdbcType=DECIMAL},
+      GXBZ = #{record.gxbz,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bsoft.domain.EhospitaliiRsglZgda" >
+    update EHOSPITALII_RSGL_ZGDA
+    <set >
+      <if test="zggh != null" >
+        ZGGH = #{zggh,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        XM = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="xb != null" >
+        XB = #{xb,jdbcType=VARCHAR},
+      </if>
+      <if test="srm1 != null" >
+        SRM1 = #{srm1,jdbcType=VARCHAR},
+      </if>
+      <if test="dhdh != null" >
+        DHDH = #{dhdh,jdbcType=VARCHAR},
+      </if>
+      <if test="dhqh != null" >
+        DHQH = #{dhqh,jdbcType=VARCHAR},
+      </if>
+      <if test="ksid != null" >
+        KSID = #{ksid,jdbcType=VARCHAR},
+      </if>
+      <if test="ksdm != null" >
+        KSDM = #{ksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="ksmc != null" >
+        KSMC = #{ksmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zyksid != null" >
+        ZYKSID = #{zyksid,jdbcType=VARCHAR},
+      </if>
+      <if test="zyksdm != null" >
+        ZYKSDM = #{zyksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zyksmc != null" >
+        ZYKSMC = #{zyksmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zgfl != null" >
+        ZGFL = #{zgfl,jdbcType=VARCHAR},
+      </if>
+      <if test="zgflmc != null" >
+        ZGFLMC = #{zgflmc,jdbcType=VARCHAR},
+      </if>
+      <if test="ryxz != null" >
+        RYXZ = #{ryxz,jdbcType=VARCHAR},
+      </if>
+      <if test="ryxzmc != null" >
+        RYXZMC = #{ryxzmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zc != null" >
+        ZC = #{zc,jdbcType=VARCHAR},
+      </if>
+      <if test="zcmc != null" >
+        ZCMC = #{zcmc,jdbcType=VARCHAR},
+      </if>
+      <if test="zw != null" >
+        ZW = #{zw,jdbcType=VARCHAR},
+      </if>
+      <if test="zwmc != null" >
+        ZWMC = #{zwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="nj != null" >
+        NJ = #{nj,jdbcType=VARCHAR},
+      </if>
+      <if test="jb != null" >
+        JB = #{jb,jdbcType=VARCHAR},
+      </if>
+      <if test="gw != null" >
+        GW = #{gw,jdbcType=VARCHAR},
+      </if>
+      <if test="hisKsdm != null" >
+        HIS_KSDM = #{hisKsdm,jdbcType=VARCHAR},
+      </if>
+      <if test="hisKsmc != null" >
+        HIS_KSMC = #{hisKsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="hl != null" >
+        HL = #{hl,jdbcType=DECIMAL},
+      </if>
+      <if test="zxpb != null" >
+        ZXPB = #{zxpb,jdbcType=DECIMAL},
+      </if>
+      <if test="sypb != null" >
+        SYPB = #{sypb,jdbcType=DECIMAL},
+      </if>
+      <if test="gxbz != null" >
+        GXBZ = #{gxbz,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ZGID = #{zgid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bsoft.domain.EhospitaliiRsglZgda" >
+    update EHOSPITALII_RSGL_ZGDA
+    set ZGGH = #{zggh,jdbcType=VARCHAR},
+      XM = #{xm,jdbcType=VARCHAR},
+      XB = #{xb,jdbcType=VARCHAR},
+      SRM1 = #{srm1,jdbcType=VARCHAR},
+      DHDH = #{dhdh,jdbcType=VARCHAR},
+      DHQH = #{dhqh,jdbcType=VARCHAR},
+      KSID = #{ksid,jdbcType=VARCHAR},
+      KSDM = #{ksdm,jdbcType=VARCHAR},
+      KSMC = #{ksmc,jdbcType=VARCHAR},
+      ZYKSID = #{zyksid,jdbcType=VARCHAR},
+      ZYKSDM = #{zyksdm,jdbcType=VARCHAR},
+      ZYKSMC = #{zyksmc,jdbcType=VARCHAR},
+      ZGFL = #{zgfl,jdbcType=VARCHAR},
+      ZGFLMC = #{zgflmc,jdbcType=VARCHAR},
+      RYXZ = #{ryxz,jdbcType=VARCHAR},
+      RYXZMC = #{ryxzmc,jdbcType=VARCHAR},
+      ZC = #{zc,jdbcType=VARCHAR},
+      ZCMC = #{zcmc,jdbcType=VARCHAR},
+      ZW = #{zw,jdbcType=VARCHAR},
+      ZWMC = #{zwmc,jdbcType=VARCHAR},
+      NJ = #{nj,jdbcType=VARCHAR},
+      JB = #{jb,jdbcType=VARCHAR},
+      GW = #{gw,jdbcType=VARCHAR},
+      HIS_KSDM = #{hisKsdm,jdbcType=VARCHAR},
+      HIS_KSMC = #{hisKsmc,jdbcType=VARCHAR},
+      HL = #{hl,jdbcType=DECIMAL},
+      ZXPB = #{zxpb,jdbcType=DECIMAL},
+      SYPB = #{sypb,jdbcType=DECIMAL},
+      GXBZ = #{gxbz,jdbcType=DECIMAL}
+    where ZGID = #{zgid,jdbcType=VARCHAR}
+  </update>
+</mapper>

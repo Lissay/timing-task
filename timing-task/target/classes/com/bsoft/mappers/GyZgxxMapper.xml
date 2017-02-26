@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bsoft.dao.GyZgxxMapper" >
+  <resultMap id="BaseResultMap" type="com.bsoft.domain.GyZgxx" >
+    <id column="ZGID" property="zgid" jdbcType="VARCHAR" />
+    <result column="XM" property="xm" jdbcType="VARCHAR" />
+    <result column="KSDM" property="ksdm" jdbcType="VARCHAR" />
+    <result column="ZWKSDM" property="zwksdm" jdbcType="VARCHAR" />
+    <result column="CFQ" property="cfq" jdbcType="VARCHAR" />
+    <result column="MZYQ" property="mzyq" jdbcType="VARCHAR" />
+    <result column="JSYQ" property="jsyq" jdbcType="VARCHAR" />
+    <result column="DPQ" property="dpq" jdbcType="VARCHAR" />
+    <result column="SSQ" property="ssq" jdbcType="VARCHAR" />
+    <result column="HYQ" property="hyq" jdbcType="VARCHAR" />
+    <result column="TJQ" property="tjq" jdbcType="VARCHAR" />
+    <result column="JCZLD" property="jczld" jdbcType="VARCHAR" />
+    <result column="HXCRQ" property="hxcrq" jdbcType="VARCHAR" />
+    <result column="YYKDQ" property="yykdq" jdbcType="VARCHAR" />
+    <result column="HLYWQ" property="hlywq" jdbcType="VARCHAR" />
+    <result column="KFZLQ" property="kfzlq" jdbcType="VARCHAR" />
+    <result column="MZZCQ" property="mzzcq" jdbcType="VARCHAR" />
+    <result column="JZZCQ" property="jzzcq" jdbcType="VARCHAR" />
+    <result column="YSZSBH" property="yszsbh" jdbcType="VARCHAR" />
+    <result column="GXBZ" property="gxbz" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ZGID, XM, KSDM, ZWKSDM, CFQ, MZYQ, JSYQ, DPQ, SSQ, HYQ, TJQ, JCZLD, HXCRQ, YYKDQ, 
+    HLYWQ, KFZLQ, MZZCQ, JZZCQ, YSZSBH, GXBZ
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.bsoft.domain.GyZgxxExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from GY_ZGXX
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from GY_ZGXX
+    where ZGID = #{zgid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from GY_ZGXX
+    where ZGID = #{zgid,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.bsoft.domain.GyZgxxExample" >
+    delete from GY_ZGXX
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.bsoft.domain.GyZgxx" >
+    insert into GY_ZGXX (ZGID, XM, KSDM, 
+      ZWKSDM, CFQ, MZYQ, 
+      JSYQ, DPQ, SSQ, HYQ, 
+      TJQ, JCZLD, HXCRQ, 
+      YYKDQ, HLYWQ, KFZLQ, 
+      MZZCQ, JZZCQ, YSZSBH, 
+      GXBZ)
+    values (#{zgid,jdbcType=VARCHAR}, #{xm,jdbcType=VARCHAR}, #{ksdm,jdbcType=VARCHAR}, 
+      #{zwksdm,jdbcType=VARCHAR}, #{cfq,jdbcType=VARCHAR}, #{mzyq,jdbcType=VARCHAR}, 
+      #{jsyq,jdbcType=VARCHAR}, #{dpq,jdbcType=VARCHAR}, #{ssq,jdbcType=VARCHAR}, #{hyq,jdbcType=VARCHAR}, 
+      #{tjq,jdbcType=VARCHAR}, #{jczld,jdbcType=VARCHAR}, #{hxcrq,jdbcType=VARCHAR}, 
+      #{yykdq,jdbcType=VARCHAR}, #{hlywq,jdbcType=VARCHAR}, #{kfzlq,jdbcType=VARCHAR}, 
+      #{mzzcq,jdbcType=VARCHAR}, #{jzzcq,jdbcType=VARCHAR}, #{yszsbh,jdbcType=VARCHAR}, 
+      #{gxbz,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bsoft.domain.GyZgxx" >
+    insert into GY_ZGXX
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zgid != null" >
+        ZGID,
+      </if>
+      <if test="xm != null" >
+        XM,
+      </if>
+      <if test="ksdm != null" >
+        KSDM,
+      </if>
+      <if test="zwksdm != null" >
+        ZWKSDM,
+      </if>
+      <if test="cfq != null" >
+        CFQ,
+      </if>
+      <if test="mzyq != null" >
+        MZYQ,
+      </if>
+      <if test="jsyq != null" >
+        JSYQ,
+      </if>
+      <if test="dpq != null" >
+        DPQ,
+      </if>
+      <if test="ssq != null" >
+        SSQ,
+      </if>
+      <if test="hyq != null" >
+        HYQ,
+      </if>
+      <if test="tjq != null" >
+        TJQ,
+      </if>
+      <if test="jczld != null" >
+        JCZLD,
+      </if>
+      <if test="hxcrq != null" >
+        HXCRQ,
+      </if>
+      <if test="yykdq != null" >
+        YYKDQ,
+      </if>
+      <if test="hlywq != null" >
+        HLYWQ,
+      </if>
+      <if test="kfzlq != null" >
+        KFZLQ,
+      </if>
+      <if test="mzzcq != null" >
+        MZZCQ,
+      </if>
+      <if test="jzzcq != null" >
+        JZZCQ,
+      </if>
+      <if test="yszsbh != null" >
+        YSZSBH,
+      </if>
+      <if test="gxbz != null" >
+        GXBZ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zgid != null" >
+        #{zgid,jdbcType=VARCHAR},
+      </if>
+      <if test="xm != null" >
+        #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="ksdm != null" >
+        #{ksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zwksdm != null" >
+        #{zwksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="cfq != null" >
+        #{cfq,jdbcType=VARCHAR},
+      </if>
+      <if test="mzyq != null" >
+        #{mzyq,jdbcType=VARCHAR},
+      </if>
+      <if test="jsyq != null" >
+        #{jsyq,jdbcType=VARCHAR},
+      </if>
+      <if test="dpq != null" >
+        #{dpq,jdbcType=VARCHAR},
+      </if>
+      <if test="ssq != null" >
+        #{ssq,jdbcType=VARCHAR},
+      </if>
+      <if test="hyq != null" >
+        #{hyq,jdbcType=VARCHAR},
+      </if>
+      <if test="tjq != null" >
+        #{tjq,jdbcType=VARCHAR},
+      </if>
+      <if test="jczld != null" >
+        #{jczld,jdbcType=VARCHAR},
+      </if>
+      <if test="hxcrq != null" >
+        #{hxcrq,jdbcType=VARCHAR},
+      </if>
+      <if test="yykdq != null" >
+        #{yykdq,jdbcType=VARCHAR},
+      </if>
+      <if test="hlywq != null" >
+        #{hlywq,jdbcType=VARCHAR},
+      </if>
+      <if test="kfzlq != null" >
+        #{kfzlq,jdbcType=VARCHAR},
+      </if>
+      <if test="mzzcq != null" >
+        #{mzzcq,jdbcType=VARCHAR},
+      </if>
+      <if test="jzzcq != null" >
+        #{jzzcq,jdbcType=VARCHAR},
+      </if>
+      <if test="yszsbh != null" >
+        #{yszsbh,jdbcType=VARCHAR},
+      </if>
+      <if test="gxbz != null" >
+        #{gxbz,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.bsoft.domain.GyZgxxExample" resultType="java.lang.Integer" >
+    select count(*) from GY_ZGXX
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update GY_ZGXX
+    <set >
+      <if test="record.zgid != null" >
+        ZGID = #{record.zgid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xm != null" >
+        XM = #{record.xm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ksdm != null" >
+        KSDM = #{record.ksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zwksdm != null" >
+        ZWKSDM = #{record.zwksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cfq != null" >
+        CFQ = #{record.cfq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mzyq != null" >
+        MZYQ = #{record.mzyq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jsyq != null" >
+        JSYQ = #{record.jsyq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpq != null" >
+        DPQ = #{record.dpq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ssq != null" >
+        SSQ = #{record.ssq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hyq != null" >
+        HYQ = #{record.hyq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tjq != null" >
+        TJQ = #{record.tjq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jczld != null" >
+        JCZLD = #{record.jczld,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hxcrq != null" >
+        HXCRQ = #{record.hxcrq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yykdq != null" >
+        YYKDQ = #{record.yykdq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hlywq != null" >
+        HLYWQ = #{record.hlywq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kfzlq != null" >
+        KFZLQ = #{record.kfzlq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mzzcq != null" >
+        MZZCQ = #{record.mzzcq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jzzcq != null" >
+        JZZCQ = #{record.jzzcq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yszsbh != null" >
+        YSZSBH = #{record.yszsbh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gxbz != null" >
+        GXBZ = #{record.gxbz,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update GY_ZGXX
+    set ZGID = #{record.zgid,jdbcType=VARCHAR},
+      XM = #{record.xm,jdbcType=VARCHAR},
+      KSDM = #{record.ksdm,jdbcType=VARCHAR},
+      ZWKSDM = #{record.zwksdm,jdbcType=VARCHAR},
+      CFQ = #{record.cfq,jdbcType=VARCHAR},
+      MZYQ = #{record.mzyq,jdbcType=VARCHAR},
+      JSYQ = #{record.jsyq,jdbcType=VARCHAR},
+      DPQ = #{record.dpq,jdbcType=VARCHAR},
+      SSQ = #{record.ssq,jdbcType=VARCHAR},
+      HYQ = #{record.hyq,jdbcType=VARCHAR},
+      TJQ = #{record.tjq,jdbcType=VARCHAR},
+      JCZLD = #{record.jczld,jdbcType=VARCHAR},
+      HXCRQ = #{record.hxcrq,jdbcType=VARCHAR},
+      YYKDQ = #{record.yykdq,jdbcType=VARCHAR},
+      HLYWQ = #{record.hlywq,jdbcType=VARCHAR},
+      KFZLQ = #{record.kfzlq,jdbcType=VARCHAR},
+      MZZCQ = #{record.mzzcq,jdbcType=VARCHAR},
+      JZZCQ = #{record.jzzcq,jdbcType=VARCHAR},
+      YSZSBH = #{record.yszsbh,jdbcType=VARCHAR},
+      GXBZ = #{record.gxbz,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bsoft.domain.GyZgxx" >
+    update GY_ZGXX
+    <set >
+      <if test="xm != null" >
+        XM = #{xm,jdbcType=VARCHAR},
+      </if>
+      <if test="ksdm != null" >
+        KSDM = #{ksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="zwksdm != null" >
+        ZWKSDM = #{zwksdm,jdbcType=VARCHAR},
+      </if>
+      <if test="cfq != null" >
+        CFQ = #{cfq,jdbcType=VARCHAR},
+      </if>
+      <if test="mzyq != null" >
+        MZYQ = #{mzyq,jdbcType=VARCHAR},
+      </if>
+      <if test="jsyq != null" >
+        JSYQ = #{jsyq,jdbcType=VARCHAR},
+      </if>
+      <if test="dpq != null" >
+        DPQ = #{dpq,jdbcType=VARCHAR},
+      </if>
+      <if test="ssq != null" >
+        SSQ = #{ssq,jdbcType=VARCHAR},
+      </if>
+      <if test="hyq != null" >
+        HYQ = #{hyq,jdbcType=VARCHAR},
+      </if>
+      <if test="tjq != null" >
+        TJQ = #{tjq,jdbcType=VARCHAR},
+      </if>
+      <if test="jczld != null" >
+        JCZLD = #{jczld,jdbcType=VARCHAR},
+      </if>
+      <if test="hxcrq != null" >
+        HXCRQ = #{hxcrq,jdbcType=VARCHAR},
+      </if>
+      <if test="yykdq != null" >
+        YYKDQ = #{yykdq,jdbcType=VARCHAR},
+      </if>
+      <if test="hlywq != null" >
+        HLYWQ = #{hlywq,jdbcType=VARCHAR},
+      </if>
+      <if test="kfzlq != null" >
+        KFZLQ = #{kfzlq,jdbcType=VARCHAR},
+      </if>
+      <if test="mzzcq != null" >
+        MZZCQ = #{mzzcq,jdbcType=VARCHAR},
+      </if>
+      <if test="jzzcq != null" >
+        JZZCQ = #{jzzcq,jdbcType=VARCHAR},
+      </if>
+      <if test="yszsbh != null" >
+        YSZSBH = #{yszsbh,jdbcType=VARCHAR},
+      </if>
+      <if test="gxbz != null" >
+        GXBZ = #{gxbz,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ZGID = #{zgid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bsoft.domain.GyZgxx" >
+    update GY_ZGXX
+    set XM = #{xm,jdbcType=VARCHAR},
+      KSDM = #{ksdm,jdbcType=VARCHAR},
+      ZWKSDM = #{zwksdm,jdbcType=VARCHAR},
+      CFQ = #{cfq,jdbcType=VARCHAR},
+      MZYQ = #{mzyq,jdbcType=VARCHAR},
+      JSYQ = #{jsyq,jdbcType=VARCHAR},
+      DPQ = #{dpq,jdbcType=VARCHAR},
+      SSQ = #{ssq,jdbcType=VARCHAR},
+      HYQ = #{hyq,jdbcType=VARCHAR},
+      TJQ = #{tjq,jdbcType=VARCHAR},
+      JCZLD = #{jczld,jdbcType=VARCHAR},
+      HXCRQ = #{hxcrq,jdbcType=VARCHAR},
+      YYKDQ = #{yykdq,jdbcType=VARCHAR},
+      HLYWQ = #{hlywq,jdbcType=VARCHAR},
+      KFZLQ = #{kfzlq,jdbcType=VARCHAR},
+      MZZCQ = #{mzzcq,jdbcType=VARCHAR},
+      JZZCQ = #{jzzcq,jdbcType=VARCHAR},
+      YSZSBH = #{yszsbh,jdbcType=VARCHAR},
+      GXBZ = #{gxbz,jdbcType=DECIMAL}
+    where ZGID = #{zgid,jdbcType=VARCHAR}
+  </update>
+</mapper>
